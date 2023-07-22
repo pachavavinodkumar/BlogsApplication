@@ -5,9 +5,7 @@ import com.blogs.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +27,11 @@ public class BlogController {
     @GetMapping("/my-blogs")
     public ResponseEntity<List<Blog>> getUserBlogs(){
        return new ResponseEntity<>(blogService.getUserBlogs(), HttpStatus.OK);
+    }
+    @PostMapping("/create")
+    public ResponseEntity<String> createBlog(@RequestBody Blog blog) {
+        blogService.createBlog(blog);
+       return new ResponseEntity<>("Success",HttpStatus.CREATED);
     }
 
 

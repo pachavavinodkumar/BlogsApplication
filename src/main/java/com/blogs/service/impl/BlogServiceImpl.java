@@ -34,6 +34,18 @@ public class BlogServiceImpl implements BlogService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         User user = userRepository.findByUsername(username);
-        return blogRepository.findByAuthorId(user.getId());
+        return user.getBlogs();
+    }
+
+    @Override
+    public Blog createBlog(Blog blog) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        User user = userRepository.findByUsername(username);
+        blog.setAuthor(user);
+
+        // Save the blog to the database
+        Blog createdBlog = blogRepository.save(blog);
+        return createdBlog;
     }
 }

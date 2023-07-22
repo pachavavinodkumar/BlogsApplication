@@ -10,4 +10,6 @@ public interface BlogService {
     List<Blog> getAllBlogs();
 
     List<Blog> getUserBlogs();
+
+    Blog createBlog(Blog blog);
 }
