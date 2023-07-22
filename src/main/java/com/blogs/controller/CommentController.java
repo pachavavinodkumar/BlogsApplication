@@ -2,6 +2,7 @@ package com.blogs.controller;
 
 import com.blogs.entity.Comment;
 import com.blogs.service.CommentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,8 +14,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/comments")
 public class CommentController {
-    private final CommentService commentService;
 
+    private final CommentService commentService;
+    @Autowired
     public CommentController(CommentService commentService) {
         this.commentService = commentService;
     }

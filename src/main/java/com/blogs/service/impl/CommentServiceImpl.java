@@ -3,9 +3,10 @@ package com.blogs.service.impl;
 import com.blogs.entity.Comment;
 import com.blogs.repository.CommentRepository;
 import com.blogs.service.CommentService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class CommentServiceImpl implements CommentService {
 
     private final CommentRepository commentRepository;

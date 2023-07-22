@@ -8,9 +8,11 @@ import com.blogs.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class BlogServiceImpl implements BlogService {
 
     private final BlogRepository blogRepository;
@@ -32,6 +34,6 @@ public class BlogServiceImpl implements BlogService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         User user = userRepository.findByUsername(username);
-        return blogRepository.findByUserId(user.getId());
+        return blogRepository.findByAuthorId(user.getId());
     }
 }
